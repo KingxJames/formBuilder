@@ -1,10 +1,10 @@
-// workflow.stories.tsx
+// TextFieldComponent.stories.tsx
 import type { Meta, StoryObj } from "@storybook/react";
-import  { Workflow } from './workflow';
+import  { TextFieldComponent } from './TextFieldComponent';
 
-const meta: Meta<typeof Workflow> = {
-  title: 'commons/workflow',
-  component: Workflow,
+const meta: Meta<typeof TextFieldComponent> = {
+  title: 'commons/TextFieldComponent',
+  component: TextFieldComponent,
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',

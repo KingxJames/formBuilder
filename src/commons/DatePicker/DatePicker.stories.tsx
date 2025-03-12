@@ -1,10 +1,10 @@
-// workflow.stories.tsx
+// UBDatePicker.stories.tsx
 import type { Meta, StoryObj } from "@storybook/react";
-import  { Workflow } from './workflow';
+import  { UBDatePicker } from './DatePicker';
 
-const meta: Meta<typeof Workflow> = {
-  title: 'commons/workflow',
-  component: Workflow,
+const meta: Meta<typeof UBDatePicker> = {
+  title: 'commons/UBDatePicker',
+  component: UBDatePicker,
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
