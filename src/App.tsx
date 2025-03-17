@@ -1,4 +1,3 @@
-import "./App.css";
 import { CreateFormPage } from "./pages/CreateFormPage/CreateFormPage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Header } from "./components/FormBuilder/Header/Header";
