@@ -7,7 +7,7 @@ export const Workflow: React.FC = () => {
   return (
     <Box
       sx={{
-        width: "70%",
+        width: "100%",
         height: "30vw", // Set a fixed height to ensure centering works
         display: "flex",
         flexDirection: "column",

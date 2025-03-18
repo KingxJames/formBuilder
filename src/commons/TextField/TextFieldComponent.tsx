@@ -7,7 +7,7 @@ export const TextFieldComponent: React.FC = () => {
   return (
     <Box
       sx={{
-        width: "70%",
+        width: "100%",
         height: "30vw", // Set a fixed height to ensure centering works
         display: "flex",
         flexDirection: "column",
@@ -15,7 +15,6 @@ export const TextFieldComponent: React.FC = () => {
         borderRadius: "5px",
         position: "relative",
         margin: "auto",
-        padding: "2%",
       }}
     >
       <Box
@@ -25,6 +24,7 @@ export const TextFieldComponent: React.FC = () => {
           position: "relative",
           marginTop: "4%",
           marginBottom: "4%",
+          padding: "2%",
         }}
       >
         <Typography> Text Field</Typography>
@@ -47,6 +47,7 @@ export const TextFieldComponent: React.FC = () => {
           display: "flex",
           flexDirection: "column",
           justifyContent: "left",
+          padding: "2%",
         }}
       >
         <TextField

@@ -15,10 +15,13 @@ export function Droppable({ id, children }: DroppableProps) {
     color: isOver ? "green" : undefined,
     minHeight: "100px", // Ensures droppable area is visible
     border: "1px dashed gray",
-    padding: "10px",
+    padding: "5%",
     display: "flex",
+    flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: "rgba(233, 230, 230, 0.27)", // Add a background color
+    margin: "-0.5%",
   };
 
   return (

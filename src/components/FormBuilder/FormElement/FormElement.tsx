@@ -5,10 +5,21 @@ import { Draggable } from "../../../dnd/Draggable";
 import Grid from "@mui/material/Grid";
 import { Box, Typography } from "@mui/material";
 import ApartmentIcon from "@mui/icons-material/Apartment";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import TextFieldsIcon from "@mui/icons-material/TextFields";
+import NotesIcon from "@mui/icons-material/Notes";
+import DateRangeIcon from "@mui/icons-material/DateRange";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
+import ArrowDropDownCircleIcon from "@mui/icons-material/ArrowDropDownCircle";
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import GestureIcon from "@mui/icons-material/Gesture";
+import FileUploadIcon from "@mui/icons-material/FileUpload";
+import ImageIcon from "@mui/icons-material/Image";
 import TextFieldComponent from "../../../commons/TextField/TextFieldComponent";
 import Workflow from "../../../commons/workflow/workflow";
 import Notes from "../../../commons/Notes/Notes";
+import UBDatePicker from "../../../commons/DatePicker/DatePicker";
+import Time from "../../../commons/Time/Time";
 
 export const FormElements: React.FC = () => {
   // Store dropped items with unique IDs
@@ -34,23 +45,24 @@ export const FormElements: React.FC = () => {
         sx={{
           display: "flex",
           flexDirection: "column",
-          border: "1px solid black",
-          width: "25%",
-          height: "90vh",
-          padding: 3,
+          border: "1px solid #ccc",
+          width: "35vw",
+          height: "100vh", // Full screen height
           color: "rgb(57, 57, 57)",
+          overflowX: "hidden", // Disable horizontal scrolling
+          overflowY: "auto", // Enable vertical scrolling
+          maxWidth: "100%", // Ensure content does not overflow horizontally
+          backgroundColor: "rgba(233, 230, 230, 0.27)", // Add a background color
+          margin: "-0.5%",
+          padding: "2%",
         }}
       >
-        {/* <Box sx={{ mb: "10%", display: "flex", justifyContent: "right" }}>
-          <ArrowBackIcon />
-        </Box> */}
-
         <Box sx={{ mb: "10%", textAlign: "center" }}>
           <Typography
             sx={{
               fontSize: "15px",
-              fontWeight: "900",
-              mb: "3%",
+              fontWeight: "600",
+              mb: "5%",
               textAlign: "left",
             }}
           >
@@ -73,25 +85,34 @@ export const FormElements: React.FC = () => {
             <Typography
               sx={{
                 fontSize: "15px",
-                fontWeight: "900",
-                mb: "3%",
+                fontWeight: "600",
+                mb: "5%",
                 textAlign: "left",
               }}
             >
               Text Elements
             </Typography>
 
-            <Box sx={{ display: "flex", flexDirection: "row", gap: "3%" }}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                gap: "3%",
+                width: "100%",
+                padding: "2%",
+              }}
+            >
               <Grid item xs={12} display="flex" justifyContent="center">
                 <Draggable id="textField">
-                  <ApartmentIcon />
+                  <TextFieldsIcon />
                   TextField
                 </Draggable>
               </Grid>
 
               <Grid item xs={12} display="flex" justifyContent="space-between">
                 <Draggable id="notes">
-                  <ApartmentIcon />
+                  <NotesIcon />
                   Notes
                 </Draggable>
               </Grid>
@@ -102,7 +123,7 @@ export const FormElements: React.FC = () => {
             <Typography
               sx={{
                 fontSize: "15px",
-                fontWeight: "900",
+                fontWeight: "600",
                 mb: "3%",
                 textAlign: "left",
               }}
@@ -110,17 +131,25 @@ export const FormElements: React.FC = () => {
               Date Elements{" "}
             </Typography>
 
-            <Box sx={{ display: "flex", flexDirection: "row", gap: "3%" }}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                gap: "3%",
+                width: "100%",
+                padding: "2%",
+              }}
+            >
               <Grid item xs={12} display="flex" justifyContent="center">
                 <Draggable id="datePicker">
-                  <ApartmentIcon />
+                  <DateRangeIcon />
                   Date Picker
                 </Draggable>
               </Grid>
-
               <Grid item xs={12} display="flex" justifyContent="space-between">
                 <Draggable id="time">
-                  <ApartmentIcon />
+                  <AccessTimeIcon />
                   Time
                 </Draggable>
               </Grid>
@@ -131,57 +160,75 @@ export const FormElements: React.FC = () => {
             <Typography
               sx={{
                 fontSize: "15px",
-                fontWeight: "900",
-                mb: "3%",
+                fontWeight: "600",
+                mb: "5%",
                 textAlign: "left",
               }}
             >
               Other Elements
             </Typography>
 
-            <Box sx={{ display: "flex", flexDirection: "row", gap: "3%" }}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                gap: "3%",
+                width: "100%",
+                padding: "2%",
+              }}
+            >
               <Grid item xs={12} display="flex" justifyContent="center">
                 <Draggable id="Radio">
-                  <ApartmentIcon />
+                  <RadioButtonCheckedIcon />
                   Radio
                 </Draggable>
               </Grid>
-
-              <Grid item xs={12} display="flex" justifyContent="space-between">
-                <Draggable id="Toggle">
-                  <ApartmentIcon />
-                  Toggle
-                </Draggable>
-              </Grid>
-            </Box>
-
-            <Box sx={{ display: "flex", flexDirection: "row", gap: "3%" }}>
               <Grid item xs={12} display="flex" justifyContent="center">
                 <Draggable id="checkList">
                   <ApartmentIcon />
                   checkList
                 </Draggable>
               </Grid>
+            </Box>
 
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                gap: "3%",
+                width: "100%",
+                padding: "2%",
+              }}
+            >
               <Grid item xs={12} display="flex" justifyContent="space-between">
                 <Draggable id="Dropdown">
-                  <ApartmentIcon />
+                  <ArrowDropDownCircleIcon />
                   Dropdown
+                </Draggable>
+              </Grid>
+              <Grid item xs={12} display="flex" justifyContent="center">
+                <Draggable id="CheckBox">
+                  <CheckBoxIcon />
+                  CheckBox
                 </Draggable>
               </Grid>
             </Box>
 
-            <Box sx={{ display: "flex", flexDirection: "row", gap: "3%" }}>
-              <Grid item xs={12} display="flex" justifyContent="center">
-                <Draggable id="CheckBox">
-                  <ApartmentIcon />
-                  CheckBox
-                </Draggable>
-              </Grid>
-
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                gap: "3%",
+                width: "100%",
+                padding: "2%",
+              }}
+            >
               <Grid item xs={12} display="flex" justifyContent="space-between">
                 <Draggable id="Signature">
-                  <ApartmentIcon />
+                  <GestureIcon />
                   Signature
                 </Draggable>
               </Grid>
@@ -192,25 +239,34 @@ export const FormElements: React.FC = () => {
             <Typography
               sx={{
                 fontSize: "15px",
-                fontWeight: "900",
-                mb: "3%",
+                fontWeight: "600",
+                mb: "5%",
                 textAlign: "left",
               }}
             >
               Media Elements{" "}
             </Typography>
 
-            <Box sx={{ display: "flex", flexDirection: "row", gap: "3%" }}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                gap: "3%",
+                width: "100%",
+                padding: "2%",
+              }}
+            >
+              {" "}
               <Grid item xs={12} display="flex" justifyContent="center">
                 <Draggable id="Upload">
-                  <ApartmentIcon />
+                  <FileUploadIcon />
                   Upload
                 </Draggable>
               </Grid>
-
               <Grid item xs={12} display="flex" justifyContent="space-between">
                 <Draggable id="Image">
-                  <ApartmentIcon />
+                  <ImageIcon />
                   Image
                 </Draggable>
               </Grid>
@@ -224,29 +280,58 @@ export const FormElements: React.FC = () => {
         sx={{
           width: "100%",
           height: "100%",
-          border: "1px solid black",
-          boxSizing: "border-box",
+          padding: 2,
+          overflowY: "auto", // Allows scrolling if many items are added
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: 2,
+          alignItems: "stretch", // Ensures items take full width
+          gap: 2, // Adds spacing between elements
         }}
       >
         <Droppable id="droppable">
-          {droppedItems.length === 0
-            ? "Drop here"
-            : droppedItems.map((item) => (
-                <Box key={item.id} sx={{ mb: 2 }}>
-                  {item.type === "workflow-step" ? (
-                    <Workflow />
-                  ) : item.type === "textField" ? (
-                    <TextFieldComponent />
-                  ) : item.type === "notes" ? (
-                    <Notes />
-                  ) : null}
-                </Box>
-              ))}
+          {droppedItems.length === 0 ? (
+            <Typography textAlign="center">+ ADD WORKFLOW STEP HERE</Typography>
+          ) : (
+            droppedItems.map((item) => (
+              <Box
+                key={item.id}
+                sx={{
+                  width: "100%",
+                  background: "#f5f5f5",
+                  padding: 2,
+                  borderRadius: 1,
+                }}
+              >
+                {item.type === "workflow-step" ? (
+                  <Workflow />
+                ) : item.type === "textField" ? (
+                  <TextFieldComponent />
+                ) : item.type === "notes" ? (
+                  <Notes />
+                ) : item.type === "datePicker" ? (
+                  <UBDatePicker />
+                ) : item.type === "time" ? (
+                  <Time />
+                ) : item.type === "Radio" ? (
+                  <UBRadio />
+                ) : item.type === "Toggle" ? (
+                  <UBToggle />
+                ) : item.type === "checkList" ? (
+                  <UBCheckList />
+                ) : item.type === "Dropdown" ? (
+                  <UBDropdown />
+                ) : item.type === "CheckBox" ? (
+                  <UBCheckBox />
+                ) : item.type === "Signature" ? (
+                  <UBSignature />
+                ) : item.type === "Upload" ? (
+                  <UBUpload />
+                ) : item.type === "Image" ? (
+                  <UBImage />
+                ) : null}
+              </Box>
+            ))
+          )}
         </Droppable>
       </Box>
     </DndContext>

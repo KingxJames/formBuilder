@@ -7,15 +7,14 @@ export const Notes: React.FC = () => {
   return (
     <Box
       sx={{
-        width: "70%",
-        height: "auto", // Ensures height adapts to viewport width
+        width: "100%",
+        height: "35vw", // Set a fixed height to ensure centering works
         display: "flex",
         flexDirection: "column",
         border: "1px solid black",
         borderRadius: "5px",
         position: "relative",
         margin: "auto",
-        padding: "2%",
         alignItems: "center",
       }}
     >
@@ -24,9 +23,10 @@ export const Notes: React.FC = () => {
         sx={{
           display: "flex",
           alignItems: "center",
-          width: "100%",
+          width: "95%",
           position: "relative",
-          marginBottom: "4%",
+          marginBottom: "0%",
+          padding: "4%",
         }}
       >
         <Typography>Notes</Typography>
