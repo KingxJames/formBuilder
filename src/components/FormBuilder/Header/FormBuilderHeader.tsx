@@ -1,6 +1,5 @@
 import React from "react";
-import { Box, Typography, TextField } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
+import { Box, Typography } from "@mui/material";
 import UBLogoWhite from "../../../images/UBLogoWhite.png";
 
 export const FormBuilderHeader: React.FC = () => {

@@ -3,11 +3,11 @@ import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import PublishIcon from "@mui/icons-material/Publish";
 import React from "react";
 
-interface WorkFlowProps {
+interface FormInfoProps {
   name: string;
 }
 
-export const WorkFlow: React.FC<WorkFlowProps> = ({ name }) => {
+export const FormInfo: React.FC<FormInfoProps> = ({ name }) => {
   const isMobile = useMediaQuery("(max-width: 768px)"); // Responsive Breakpoint
 
   return (
@@ -114,4 +114,4 @@ export const WorkFlow: React.FC<WorkFlowProps> = ({ name }) => {
   );
 };
 
-export default WorkFlow;
+export default FormInfo;
