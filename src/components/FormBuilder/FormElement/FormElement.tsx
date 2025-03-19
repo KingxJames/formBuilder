@@ -20,6 +20,11 @@ import Workflow from "../../../commons/workflow/workflow";
 import Notes from "../../../commons/Notes/Notes";
 import UBDatePicker from "../../../commons/DatePicker/DatePicker";
 import Time from "../../../commons/Time/Time";
+import UBRadio from "../../../commons/Radio/Radio";
+import UBDropDown from "../../../commons/DropDown/DropDown";
+import UBCheckBox from "../../../commons/CheckBox/CheckBox";
+import UBSignature from "../../../commons/Signature/Signature";
+import UBUpload from "../../../commons/Upload/UBUpload";
 
 export const FormElements: React.FC = () => {
   // Store dropped items with unique IDs
@@ -184,36 +189,13 @@ export const FormElements: React.FC = () => {
                   Radio
                 </Draggable>
               </Grid>
-              <Grid item xs={12} display="flex" justifyContent="center">
-                <Draggable id="checkList">
-                  <ApartmentIcon />
-                  checkList
-                </Draggable>
-              </Grid>
-            </Box>
 
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "center",
-                gap: "3%",
-                width: "100%",
-                padding: "2%",
-              }}
-            >
               <Grid item xs={12} display="flex" justifyContent="space-between">
                 <Draggable id="Dropdown">
                   <ArrowDropDownCircleIcon />
                   Dropdown
                 </Draggable>
               </Grid>
-              <Grid item xs={12} display="flex" justifyContent="center">
-                <Draggable id="CheckBox">
-                  <CheckBoxIcon />
-                  CheckBox
-                </Draggable>
-              </Grid>
             </Box>
 
             <Box
@@ -226,6 +208,13 @@ export const FormElements: React.FC = () => {
                 padding: "2%",
               }}
             >
+              <Grid item xs={12} display="flex" justifyContent="center">
+                <Draggable id="CheckBox">
+                  <CheckBoxIcon />
+                  CheckBox
+                </Draggable>
+              </Grid>
+
               <Grid item xs={12} display="flex" justifyContent="space-between">
                 <Draggable id="Signature">
                   <GestureIcon />
@@ -257,17 +246,10 @@ export const FormElements: React.FC = () => {
                 padding: "2%",
               }}
             >
-              {" "}
               <Grid item xs={12} display="flex" justifyContent="center">
                 <Draggable id="Upload">
                   <FileUploadIcon />
                   Upload
-                </Draggable>
-              </Grid>
-              <Grid item xs={12} display="flex" justifyContent="space-between">
-                <Draggable id="Image">
-                  <ImageIcon />
-                  Image
                 </Draggable>
               </Grid>
             </Box>
@@ -314,20 +296,14 @@ export const FormElements: React.FC = () => {
                   <Time />
                 ) : item.type === "Radio" ? (
                   <UBRadio />
-                ) : item.type === "Toggle" ? (
-                  <UBToggle />
-                ) : item.type === "checkList" ? (
-                  <UBCheckList />
                 ) : item.type === "Dropdown" ? (
-                  <UBDropdown />
+                  <UBDropDown />
                 ) : item.type === "CheckBox" ? (
                   <UBCheckBox />
                 ) : item.type === "Signature" ? (
                   <UBSignature />
                 ) : item.type === "Upload" ? (
                   <UBUpload />
-                ) : item.type === "Image" ? (
-                  <UBImage />
                 ) : null}
               </Box>
             ))

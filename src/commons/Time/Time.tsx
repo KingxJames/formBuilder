@@ -1,4 +1,7 @@
 import React from "react";
+import { TimePicker } from "@mui/x-date-pickers/TimePicker";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { Box, Typography, TextField } from "@mui/material";
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -7,15 +10,13 @@ export const Time: React.FC = () => {
   return (
     <Box
       sx={{
-        width: "70%",
+        width: "100%",
         height: "auto",
         display: "flex",
         flexDirection: "column",
         border: "1px solid black",
         borderRadius: "5px",
-        position: "relative",
-        margin: "auto",
-        padding: "2%",
+        padding: "4% 0 5% 0%",
         alignItems: "center",
       }}
     >
@@ -27,6 +28,7 @@ export const Time: React.FC = () => {
           width: "100%",
           position: "relative",
           marginBottom: "4%",
+          marginLeft: "4%",
         }}
       >
         <Typography>Label Of Time</Typography>
@@ -35,7 +37,7 @@ export const Time: React.FC = () => {
         <Box
           sx={{
             position: "absolute",
-            right: "10px",
+            right: "5%",
             top: "50%",
             transform: "translateY(-50%)",
           }}
@@ -62,6 +64,9 @@ export const Time: React.FC = () => {
             mb: 2,
           }}
         />
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <TimePicker label="hh:mm aa" />
+        </LocalizationProvider>
       </Box>
     </Box>
   );

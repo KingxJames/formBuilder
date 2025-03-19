@@ -46,7 +46,7 @@ export const UBCheckBox: React.FC = () => {
         flexDirection: "column",
         border: "1px solid black",
         borderRadius: "5px",
-        padding: "2%",
+        padding: "4% 0 2% 0%",
         margin: "auto",
       }}
     >
@@ -58,11 +58,20 @@ export const UBCheckBox: React.FC = () => {
           width: "100%",
           position: "relative",
           marginBottom: "4%",
+          marginLeft: "4%",
         }}
       >
-        <Typography>CheckList</Typography>
+        <Typography>Check Box</Typography>
 
-        <Box sx={{ marginLeft: "auto" }}>
+        {/* Icons */}
+        <Box
+          sx={{
+            position: "absolute",
+            right: "5%",
+            top: "50%",
+            transform: "translateY(-50%)",
+          }}
+        >
           <DragIndicatorIcon sx={{ cursor: "grab", marginRight: "8px" }} />
           <DeleteIcon sx={{ cursor: "pointer", color: "red" }} />
         </Box>
@@ -82,11 +91,19 @@ export const UBCheckBox: React.FC = () => {
           sx={{
             width: "100%",
             mb: 2,
+            padding: "3%",
           }}
         />
 
         {/* CheckList */}
-        <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "10px",
+            padding: "3%",
+          }}
+        >
           {checkListOptions.map((option) => (
             <Box
               key={option.id}
@@ -120,6 +137,8 @@ export const UBCheckBox: React.FC = () => {
           backgroundColor: "#7d2d91",
           marginTop: "10px",
           alignSelf: "flex-start",
+          ml: "3%",
+          width: "55vw",
         }}
       >
         Add Option

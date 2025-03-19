@@ -54,7 +54,7 @@ export const UBDropDown: React.FC = () => {
         flexDirection: "column",
         border: "1px solid black",
         borderRadius: "5px",
-        padding: "2%",
+        padding: "4% 0 2% 0%",
         margin: "auto",
       }}
     >
@@ -66,11 +66,20 @@ export const UBDropDown: React.FC = () => {
           width: "100%",
           position: "relative",
           marginBottom: "4%",
+          marginLeft: "4%",
         }}
       >
-        <Typography>DropDown</Typography>
+        <Typography>Drop Down</Typography>
 
-        <Box sx={{ marginLeft: "auto" }}>
+        {/* Icons */}
+        <Box
+          sx={{
+            position: "absolute",
+            right: "5%",
+            top: "50%",
+            transform: "translateY(-50%)",
+          }}
+        >
           <DragIndicatorIcon sx={{ cursor: "grab", marginRight: "8px" }} />
           <DeleteIcon sx={{ cursor: "pointer", color: "red" }} />
         </Box>
@@ -89,12 +98,19 @@ export const UBDropDown: React.FC = () => {
           placeholder="Some description about the field"
           sx={{
             width: "100%",
-            mb: 2,
+            padding: "3%",
           }}
         />
 
         {/* DropDown */}
-        <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "10px",
+            padding: "3%",
+          }}
+        >
           {/* Dropdown Select */}
           <Select
             value={selectedOption}
@@ -117,7 +133,12 @@ export const UBDropDown: React.FC = () => {
           {dropDownOptions.map((option) => (
             <Box
               key={option.id}
-              sx={{ display: "flex", alignItems: "center", gap: "5px" }}
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: "5px",
+                padding: "3%",
+              }}
             >
               <TextField
                 variant="standard"
@@ -141,12 +162,11 @@ export const UBDropDown: React.FC = () => {
         <IconButton
           size="small"
           onClick={addDropDownOption}
-          sx={{ color: "black", backgroundColor: "transparent" }}
+          sx={{ color: "black", backgroundColor: "transparent", padding: "3%" }}
         >
           <Button
-            variant="contained"
             size="small"
-            sx={{ color: "#fff", backgroundColor: "#7d2d91" }}
+            sx={{ color: "#fff", backgroundColor: "#7d2d91", width: "55vw" }}
           >
             Add Option
           </Button>

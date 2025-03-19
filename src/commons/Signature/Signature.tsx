@@ -31,7 +31,7 @@ export const UBSignature: React.FC = () => {
         flexDirection: "column",
         border: "1px solid black",
         borderRadius: "5px",
-        padding: "2%",
+        padding: "4% 0 2% 0%",
         margin: "auto",
       }}
     >
@@ -43,11 +43,20 @@ export const UBSignature: React.FC = () => {
           width: "100%",
           position: "relative",
           marginBottom: "4%",
+          marginLeft: "4%",
         }}
       >
         <Typography>Signature</Typography>
 
-        <Box sx={{ marginLeft: "auto" }}>
+        {/* Icons */}
+        <Box
+          sx={{
+            position: "absolute",
+            right: "5%",
+            top: "50%",
+            transform: "translateY(-50%)",
+          }}
+        >
           <DragIndicatorIcon sx={{ cursor: "grab", marginRight: "8px" }} />
           <DeleteIcon sx={{ cursor: "pointer", color: "red" }} />
         </Box>
@@ -59,6 +68,8 @@ export const UBSignature: React.FC = () => {
           display: "flex",
           flexDirection: "column",
           width: "85%",
+          margin: "auto", // Center the content horizontally
+          alignItems: "center", // Center the content vertically
         }}
       >
         {/* Description Field */}
@@ -72,20 +83,38 @@ export const UBSignature: React.FC = () => {
         />
 
         {/* Signature Pad */}
-        <Box sx={{ border: "1px solid #ccc", padding: "10px", marginBottom: "15px" }}>
+        <Box
+          sx={{
+            border: "1px solid #ccc",
+            padding: "10px",
+            marginBottom: "15px",
+          }}
+        >
           <SignatureCanvas
             ref={sigCanvas}
             penColor="black"
-            canvasProps={{ width: 400, height: 200, className: "signature-canvas" }}
+            canvasProps={{
+              width: 400,
+              height: 200,
+              className: "signature-canvas",
+            }}
           />
         </Box>
 
         {/* Buttons */}
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Button variant="outlined" onClick={clearSignature} sx={{ color: "red" }}>
+        <Box sx={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
+          <Button
+            variant="outlined"
+            onClick={clearSignature}
+            sx={{ color: "red" }}
+          >
             Clear
           </Button>
-          <Button variant="contained" onClick={saveSignature} sx={{ backgroundColor: "#7d2d91", color: "#fff" }}>
+          <Button
+            variant="contained"
+            onClick={saveSignature}
+            sx={{ backgroundColor: "#7d2d91", color: "#fff" }}
+          >
             Save Signature
           </Button>
         </Box>
@@ -94,7 +123,11 @@ export const UBSignature: React.FC = () => {
         {signature && (
           <Box sx={{ mt: 2 }}>
             <Typography>Saved Signature:</Typography>
-            <img src={signature} alt="Saved Signature" style={{ maxWidth: "100%" }} />
+            <img
+              src={signature}
+              alt="Saved Signature"
+              style={{ maxWidth: "100%" }}
+            />
           </Box>
         )}
       </Box>

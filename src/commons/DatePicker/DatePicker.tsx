@@ -15,15 +15,13 @@ export const UBDatePicker: React.FC = () => {
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <Box
         sx={{
-          width: "70%",
+          width: "100%",
           height: "auto",
           display: "flex",
           flexDirection: "column",
           border: "1px solid black",
           borderRadius: "5px",
-          position: "relative",
-          margin: "auto",
-          padding: "2%",
+          padding: "4% 0 5% 0%",
           alignItems: "center",
         }}
       >
@@ -35,6 +33,7 @@ export const UBDatePicker: React.FC = () => {
             width: "100%",
             position: "relative",
             marginBottom: "4%",
+            marginLeft: "4%",
           }}
         >
           <Typography>Label Of Date</Typography>
@@ -43,7 +42,7 @@ export const UBDatePicker: React.FC = () => {
           <Box
             sx={{
               position: "absolute",
-              right: "10px",
+              right: "5%",
               top: "50%",
               transform: "translateY(-50%)",
             }}

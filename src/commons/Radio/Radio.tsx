@@ -43,19 +43,37 @@ export const UBRadio: React.FC = () => {
         flexDirection: "column",
         border: "1px solid black",
         borderRadius: "5px",
-        padding: "2%",
+        padding: "4% 0 2% 0%",
         margin: "auto",
       }}
     >
-      <Box sx={{ display: "flex", alignItems: "center", marginBottom: "4%" }}>
-        <Typography> Radio</Typography>
-        <Box sx={{ marginLeft: "auto" }}>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          width: "100%",
+          position: "relative",
+          marginBottom: "4%",
+          marginLeft: "4%",
+        }}
+      >
+        <Typography>Radio</Typography>
+
+        {/* Icons */}
+        <Box
+          sx={{
+            position: "absolute",
+            right: "5%",
+            top: "50%",
+            transform: "translateY(-50%)",
+          }}
+        >
           <DragIndicatorIcon sx={{ cursor: "grab", marginRight: "8px" }} />
           <DeleteIcon sx={{ cursor: "pointer", color: "red" }} />
         </Box>
       </Box>
 
-      <FormControl>
+      <FormControl sx={{ width: "100%", padding: "3%" }}>
         <TextField
           variant="standard"
           placeholder="Some description about the field"
@@ -103,7 +121,10 @@ export const UBRadio: React.FC = () => {
             ))}
         </Box>
 
-        <Button onClick={addRadioOption} variant="outlined" sx={{ mt: 2 }}>
+        <Button
+          onClick={addRadioOption}
+          sx={{ color: "#fff", backgroundColor: "#7d2d91", width: "55vw", mt: 2 }}
+          >
           Add Option
         </Button>
       </FormControl>
