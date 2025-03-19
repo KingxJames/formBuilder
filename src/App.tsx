@@ -10,11 +10,12 @@ function App() {
     <>
       <Router>
         <Routes>
+          <Route path="/" element={<CreateFormPage />} />
           <Route path="/" element={<FormBuilder />} />
+
           {/* <Route path="/" element={<WorkFlow  name="" />} /> */}
           {/* <Route path="/" element={<FormElements />} /> */}
           {/* <Route path="/" element={<Header />} /> */}
-          {/* <Route path="/" element={<CreateFormPage />} /> */}
           <Route path="/create-form" element={<CreateFormPage />} />
         </Routes>
       </Router>
