@@ -15,6 +15,7 @@ import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import GestureIcon from "@mui/icons-material/Gesture";
 import FileUploadIcon from "@mui/icons-material/FileUpload";
 import FormBuilderHeader from "../Header/FormBuilderHeader";
+import FormInfo from "../FormInfo/FormInfo";
 import TextFieldComponent from "../../../commons/TextField/TextFieldComponent";
 import Workflow from "../../../commons/workflow/workflow";
 import Notes from "../../../commons/Notes/Notes";
@@ -45,296 +46,320 @@ export const FormElements: React.FC = () => {
 
   return (
     <DndContext onDragEnd={handleDragEnd}>
-
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        height: "100vh", // Full viewport height
-        overflow: "hidden", // Prevent scrolling for the entire screen
-      }}
-    >
-      {/* Header */}
-      <FormBuilderHeader />
-
-      {/* Main Content */}
       <Box
         sx={{
           display: "flex",
-          flex: 1, // Take up remaining space
-          overflow: "hidden", // Prevent scrolling for the entire content area
+          flexDirection: "column",
+          height: "100vh", // Full viewport height
+          overflow: "hidden", // Prevent scrolling for the entire screen
         }}
       >
-        {/* Sidebar */}
+        {/* Header */}
+        <FormBuilderHeader />
+
+        {/* Main Content */}
         <Box
           sx={{
             display: "flex",
-            flexDirection: "column",
-            border: "1px solid #ccc",
-            width: "20vw",
-            height: "100%", // Full height of the parent
-            color: "rgb(57, 57, 57)",
-            overflowY: "auto", // Enable vertical scrolling for the sidebar
-            backgroundColor: "rgba(233, 230, 230, 0.27)",
-            padding: "2%",
+            flex: 1, // Take up remaining space
+            overflow: "hidden", // Prevent scrolling for the entire content area
           }}
         >
-          <Box sx={{ mb: "10%", textAlign: "center" }}>
-            <Typography
+          {/* Sidebar */}
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              border: "1px solid #ccc",
+              width: "20vw",
+              height: "100%", // Full height of the parent
+              color: "rgb(57, 57, 57)",
+              overflowY: "auto", // Enable vertical scrolling for the sidebar
+              backgroundColor: "rgba(233, 230, 230, 0.27)",
+              padding: "2%",
+            }}
+          >
+            <Box sx={{ mb: "10%", textAlign: "center" }}>
+              <Typography
+                sx={{
+                  fontSize: "15px",
+                  fontWeight: "600",
+                  mb: "5%",
+                  textAlign: "left",
+                }}
+              >
+                Containers
+              </Typography>
+              <Grid
+                container
+                rowSpacing={1}
+                columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+              >
+                <Grid item xs={12} display="flex" justifyContent="center">
+                  <Draggable id="workflow-step">
+                    <ApartmentIcon />
+                    Workflow Step
+                  </Draggable>
+                </Grid>
+              </Grid>
+
+              <Box sx={{ mb: "10%" }}>
+                <Typography
+                  sx={{
+                    fontSize: "15px",
+                    fontWeight: "600",
+                    mb: "5%",
+                    textAlign: "left",
+                  }}
+                >
+                  Text Elements
+                </Typography>
+
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "center",
+                    gap: "3%",
+                    width: "100%",
+                    padding: "2%",
+                  }}
+                >
+                  <Grid item xs={12} display="flex" justifyContent="center">
+                    <Draggable id="textField">
+                      <TextFieldsIcon />
+                      TextField
+                    </Draggable>
+                  </Grid>
+
+                  <Grid
+                    item
+                    xs={12}
+                    display="flex"
+                    justifyContent="space-between"
+                  >
+                    <Draggable id="notes">
+                      <NotesIcon />
+                      Notes
+                    </Draggable>
+                  </Grid>
+                </Box>
+              </Box>
+
+              <Box sx={{ mb: "10%" }}>
+                <Typography
+                  sx={{
+                    fontSize: "15px",
+                    fontWeight: "600",
+                    mb: "3%",
+                    textAlign: "left",
+                  }}
+                >
+                  Date Elements{" "}
+                </Typography>
+
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "center",
+                    gap: "3%",
+                    width: "100%",
+                    padding: "2%",
+                  }}
+                >
+                  <Grid item xs={12} display="flex" justifyContent="center">
+                    <Draggable id="datePicker">
+                      <DateRangeIcon />
+                      Date Picker
+                    </Draggable>
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                    display="flex"
+                    justifyContent="space-between"
+                  >
+                    <Draggable id="time">
+                      <AccessTimeIcon />
+                      Time
+                    </Draggable>
+                  </Grid>
+                </Box>
+              </Box>
+
+              <Box sx={{ mb: "10%" }}>
+                <Typography
+                  sx={{
+                    fontSize: "15px",
+                    fontWeight: "600",
+                    mb: "5%",
+                    textAlign: "left",
+                  }}
+                >
+                  Other Elements
+                </Typography>
+
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "center",
+                    gap: "3%",
+                    width: "100%",
+                    padding: "2%",
+                  }}
+                >
+                  <Grid item xs={12} display="flex" justifyContent="center">
+                    <Draggable id="Radio">
+                      <RadioButtonCheckedIcon />
+                      Radio
+                    </Draggable>
+                  </Grid>
+
+                  <Grid
+                    item
+                    xs={12}
+                    display="flex"
+                    justifyContent="space-between"
+                  >
+                    <Draggable id="Dropdown">
+                      <ArrowDropDownCircleIcon />
+                      Dropdown
+                    </Draggable>
+                  </Grid>
+                </Box>
+
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "center",
+                    gap: "3%",
+                    width: "100%",
+                    padding: "2%",
+                  }}
+                >
+                  <Grid item xs={12} display="flex" justifyContent="center">
+                    <Draggable id="CheckBox">
+                      <CheckBoxIcon />
+                      CheckBox
+                    </Draggable>
+                  </Grid>
+
+                  <Grid
+                    item
+                    xs={12}
+                    display="flex"
+                    justifyContent="space-between"
+                  >
+                    <Draggable id="Signature">
+                      <GestureIcon />
+                      Signature
+                    </Draggable>
+                  </Grid>
+                </Box>
+              </Box>
+
+              <Box sx={{ mb: "10%" }}>
+                <Typography
+                  sx={{
+                    fontSize: "15px",
+                    fontWeight: "600",
+                    mb: "5%",
+                    textAlign: "left",
+                  }}
+                >
+                  Media Elements{" "}
+                </Typography>
+
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "center",
+                    gap: "3%",
+                    width: "100%",
+                    padding: "2%",
+                  }}
+                >
+                  <Grid item xs={12} display="flex" justifyContent="center">
+                    <Draggable id="Upload">
+                      <FileUploadIcon />
+                      Upload
+                    </Draggable>
+                  </Grid>
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+
+          <Box sx={{ display: "flex", flex: 1, flexDirection: "column" }}>
+            <Box>
+              <FormInfo name="Form Name" />
+            </Box>
+
+            {/* Droppable Area */}
+            <Box
               sx={{
-                fontSize: "15px",
-                fontWeight: "600",
-                mb: "5%",
-                textAlign: "left",
+                flex: 1, // Take up remaining space
+                height: "100%", // Full height of the parent
+                padding: 2,
+                overflowY: "auto", // Enable vertical scrolling for the droppable area
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "stretch",
+                backgroundColor: "rgba(233, 230, 230, 0.27)",
+                gap: 2,
+                border: "1px dashed gray",
               }}
             >
-              Containers
-            </Typography>
-            <Grid
-              container
-              rowSpacing={1}
-              columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-            >
-              <Grid item xs={12} display="flex" justifyContent="center">
-                <Draggable id="workflow-step">
-                  <ApartmentIcon />
-                  Workflow Step
-                </Draggable>
-              </Grid>
-            </Grid>
-
-            <Box sx={{ mb: "10%" }}>
-              <Typography
-                sx={{
-                  fontSize: "15px",
-                  fontWeight: "600",
-                  mb: "5%",
-                  textAlign: "left",
-                }}
-              >
-                Text Elements
-              </Typography>
-
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "center",
-                  gap: "3%",
-                  width: "100%",
-                  padding: "2%",
-                }}
-              >
-                <Grid item xs={12} display="flex" justifyContent="center">
-                  <Draggable id="textField">
-                    <TextFieldsIcon />
-                    TextField
-                  </Draggable>
-                </Grid>
-
-                <Grid item xs={12} display="flex" justifyContent="space-between">
-                  <Draggable id="notes">
-                    <NotesIcon />
-                    Notes
-                  </Draggable>
-                </Grid>
-              </Box>
-            </Box>
-
-            <Box sx={{ mb: "10%" }}>
-              <Typography
-                sx={{
-                  fontSize: "15px",
-                  fontWeight: "600",
-                  mb: "3%",
-                  textAlign: "left",
-                }}
-              >
-                Date Elements{" "}
-              </Typography>
-
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "center",
-                  gap: "3%",
-                  width: "100%",
-                  padding: "2%",
-                }}
-              >
-                <Grid item xs={12} display="flex" justifyContent="center">
-                  <Draggable id="datePicker">
-                    <DateRangeIcon />
-                    Date Picker
-                  </Draggable>
-                </Grid>
-                <Grid item xs={12} display="flex" justifyContent="space-between">
-                  <Draggable id="time">
-                    <AccessTimeIcon />
-                    Time
-                  </Draggable>
-                </Grid>
-              </Box>
-            </Box>
-
-            <Box sx={{ mb: "10%" }}>
-              <Typography
-                sx={{
-                  fontSize: "15px",
-                  fontWeight: "600",
-                  mb: "5%",
-                  textAlign: "left",
-                }}
-              >
-                Other Elements
-              </Typography>
-
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "center",
-                  gap: "3%",
-                  width: "100%",
-                  padding: "2%",
-                }}
-              >
-                <Grid item xs={12} display="flex" justifyContent="center">
-                  <Draggable id="Radio">
-                    <RadioButtonCheckedIcon />
-                    Radio
-                  </Draggable>
-                </Grid>
-
-                <Grid item xs={12} display="flex" justifyContent="space-between">
-                  <Draggable id="Dropdown">
-                    <ArrowDropDownCircleIcon />
-                    Dropdown
-                  </Draggable>
-                </Grid>
-              </Box>
-
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "center",
-                  gap: "3%",
-                  width: "100%",
-                  padding: "2%",
-                }}
-              >
-                <Grid item xs={12} display="flex" justifyContent="center">
-                  <Draggable id="CheckBox">
-                    <CheckBoxIcon />
-                    CheckBox
-                  </Draggable>
-                </Grid>
-
-                <Grid item xs={12} display="flex" justifyContent="space-between">
-                  <Draggable id="Signature">
-                    <GestureIcon />
-                    Signature
-                  </Draggable>
-                </Grid>
-              </Box>
-            </Box>
-
-            <Box sx={{ mb: "10%" }}>
-              <Typography
-                sx={{
-                  fontSize: "15px",
-                  fontWeight: "600",
-                  mb: "5%",
-                  textAlign: "left",
-                }}
-              >
-                Media Elements{" "}
-              </Typography>
-
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "center",
-                  gap: "3%",
-                  width: "100%",
-                  padding: "2%",
-                }}
-              >
-                <Grid item xs={12} display="flex" justifyContent="center">
-                  <Draggable id="Upload">
-                    <FileUploadIcon />
-                    Upload
-                  </Draggable>
-                </Grid>
-              </Box>
+              <Droppable id="droppable">
+                {droppedItems.length === 0 ? (
+                  <Typography textAlign="center">
+                    + ADD WORKFLOW STEP HERE
+                  </Typography>
+                ) : (
+                  droppedItems.map((item) => (
+                    <Box
+                      key={item.id}
+                      sx={{
+                        width: "100%",
+                        background: "#f5f5f5",
+                        padding: 2,
+                        borderRadius: 1,
+                      }}
+                    >
+                      {item.type === "workflow-step" ? (
+                        <Workflow />
+                      ) : item.type === "textField" ? (
+                        <TextFieldComponent />
+                      ) : item.type === "notes" ? (
+                        <Notes />
+                      ) : item.type === "datePicker" ? (
+                        <UBDatePicker />
+                      ) : item.type === "time" ? (
+                        <Time />
+                      ) : item.type === "Radio" ? (
+                        <UBRadio />
+                      ) : item.type === "Dropdown" ? (
+                        <UBDropDown />
+                      ) : item.type === "CheckBox" ? (
+                        <UBCheckBox />
+                      ) : item.type === "Signature" ? (
+                        <UBSignature />
+                      ) : item.type === "Upload" ? (
+                        <UBUpload />
+                      ) : null}
+                    </Box>
+                  ))
+                )}
+              </Droppable>
             </Box>
           </Box>
         </Box>
-
-        {/* Droppable Area */}
-          <Box
-            sx={{
-              flex: 1, // Take up remaining space
-              height: "100%", // Full height of the parent
-              padding: 2,
-              overflowY: "auto", // Enable vertical scrolling for the droppable area
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "stretch",
-              backgroundColor: "rgba(233, 230, 230, 0.27)",
-              gap: 2,
-              border: "1px dashed gray",
-            }}
-          >
-            <Droppable id="droppable">
-              {droppedItems.length === 0 ? (
-                <Typography textAlign="center">
-                  + ADD WORKFLOW STEP HERE
-                </Typography>
-              ) : (
-                droppedItems.map((item) => (
-                  <Box
-                    key={item.id}
-                    sx={{
-                      width: "100%",
-                      background: "#f5f5f5",
-                      padding: 2,
-                      borderRadius: 1,
-                    }}
-                  >
-                    {item.type === "workflow-step" ? (
-                      <Workflow />
-                    ) : item.type === "textField" ? (
-                      <TextFieldComponent />
-                    ) : item.type === "notes" ? (
-                      <Notes />
-                    ) : item.type === "datePicker" ? (
-                      <UBDatePicker />
-                    ) : item.type === "time" ? (
-                      <Time />
-                    ) : item.type === "Radio" ? (
-                      <UBRadio />
-                    ) : item.type === "Dropdown" ? (
-                      <UBDropDown />
-                    ) : item.type === "CheckBox" ? (
-                      <UBCheckBox />
-                    ) : item.type === "Signature" ? (
-                      <UBSignature />
-                    ) : item.type === "Upload" ? (
-                      <UBUpload />
-                    ) : null}
-                  </Box>
-                ))
-              )}
-            </Droppable>
-          </Box>
       </Box>
-    </Box>
     </DndContext>
-
   );
 };
 
