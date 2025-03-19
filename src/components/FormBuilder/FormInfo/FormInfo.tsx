@@ -40,16 +40,6 @@ export const FormInfo: React.FC<FormInfoProps> = ({ name }) => {
           {name}
         </Typography>
 
-        {/* Divider */}
-        <Box
-          sx={{
-            flexGrow: 1,
-            borderBottom: "1px solid #ccc",
-            mx: 2, // Add margin to the divider
-            display: isMobile ? "none" : "block", // Hide on mobile
-          }}
-        />
-
         {/* Right-aligned Buttons */}
         <Box
           sx={{
