@@ -13,15 +13,15 @@ export function Droppable({ id, children }: DroppableProps) {
 
   const style: React.CSSProperties = {
     color: isOver ? "green" : undefined,
-    minHeight: "100px", // Ensures droppable area is visible
-    border: "1px dashed gray",
+    width: "90%", // Ensure the droppable area takes full width
+    minHeight: "100px", // Ensures droppable area is visible even when empty
     padding: "5%",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "rgba(233, 230, 230, 0.27)", // Add a background color
+    justifyContent: "flex-start", // Align children at the top
     margin: "-0.5%",
+    boxSizing: "border-box", // Ensure padding and border are included in the width/height
   };
 
   return (

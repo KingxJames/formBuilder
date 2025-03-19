@@ -8,7 +8,6 @@ export const FormBuilder: React.FC = () => {
   return (
     <Box sx={{ display: "flex",  gap: "2vh" }}>
         <FormElements />
-        {/* <WorkFlow name="Workflow Name" /> */}
     </Box>
   );
 };
