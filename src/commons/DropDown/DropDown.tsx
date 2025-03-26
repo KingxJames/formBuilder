@@ -78,8 +78,7 @@ export const UBDropDown: React.FC = () => {
             top: "50%",
             transform: "translateY(-50%)",
           }}
-        >
-        </Box>
+        ></Box>
       </Box>
 
       <Box

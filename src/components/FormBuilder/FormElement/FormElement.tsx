@@ -40,12 +40,20 @@ import UBDropDown from "../../../commons/DropDown/DropDown";
 import UBCheckBox from "../../../commons/CheckBox/CheckBox";
 import UBSignature from "../../../commons/Signature/Signature";
 import UBUpload from "../../../commons/Upload/UBUpload";
+import FormPreview from "../../../components/Preview/FormPreview";
+
+interface FormComponent {
+  id: string;
+  type: string;
+  config?: any;
+}
 
 export const FormElements: React.FC = () => {
   // Store dropped items with unique IDs
   const [droppedItems, setDroppedItems] = useState<
     { id: string; type: string }[]
   >([]);
+  const [previewOpen, setPreviewOpen] = useState(false);
 
   // Delete function
   const handleDelete = (id: string) => {
@@ -82,12 +90,12 @@ export const FormElements: React.FC = () => {
     }
   };
 
-  const renderElement = (type: string) => {
-    switch (type) {
+  const renderElement = (item: FormComponent) => {
+    switch (item.type) {
       case "workflow-step":
         return <Workflow />;
       case "textField":
-        return <TextFieldComponent />;
+        return <TextFieldComponent {...item.config} />;
       case "notes":
         return <Notes />;
       case "datePicker":
@@ -369,7 +377,10 @@ export const FormElements: React.FC = () => {
 
           <Box sx={{ display: "flex", flex: 1, flexDirection: "column" }}>
             <Box>
-              <FormInfo name="Form Name" />
+              <FormInfo
+                name="Form Name"
+                onPreviewClick={() => setPreviewOpen(true)}
+              />{" "}
             </Box>
 
             {/* Droppable Area */}
@@ -439,7 +450,7 @@ export const FormElements: React.FC = () => {
                               onClick={() => handleDelete(item.id)}
                             />
                             <Box sx={{ flexGrow: 1 }}>
-                              {renderElement(item.type)}
+                              {renderElement(item)}
                             </Box>
                           </Box>
                         </SortableItem>
@@ -450,6 +461,11 @@ export const FormElements: React.FC = () => {
               </Droppable>
             </Box>
           </Box>
+          <FormPreview
+            open={previewOpen}
+            onClose={() => setPreviewOpen(false)}
+            components={droppedItems}
+          />
         </Box>
       </Box>
     </DndContext>
