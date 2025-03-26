@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Box, Typography, TextField, Button, IconButton } from "@mui/material";
-import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -59,18 +58,7 @@ export const UBRadio: React.FC = () => {
       >
         <Typography>Radio</Typography>
 
-        {/* Icons */}
-        <Box
-          sx={{
-            position: "absolute",
-            right: "5%",
-            top: "50%",
-            transform: "translateY(-50%)",
-          }}
-        >
-          <DragIndicatorIcon sx={{ cursor: "grab", marginRight: "8px" }} />
-          <DeleteIcon sx={{ cursor: "pointer", color: "red" }} />
-        </Box>
+      
       </Box>
 
       <FormControl sx={{ width: "100%", padding: "3%" }}>

@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Typography, TextField } from "@mui/material";
-import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
-import DeleteIcon from "@mui/icons-material/Delete";
 
 export const Notes: React.FC = () => {
+  const [isDeleted, setIsDeleted] = useState(false);
+
+  // Delete functionality
+  const handleDelete = () => {
+    setIsDeleted(true);
+    // You can also perform additional actions here, like removing the component from a list
+  };
+
+  // If the component is deleted, return null to remove it from the DOM
+  if (isDeleted) {
+    return null;
+  }
+
   return (
     <Box
       sx={{
@@ -30,19 +41,6 @@ export const Notes: React.FC = () => {
         }}
       >
         <Typography>Notes</Typography>
-
-        {/* Icons */}
-        <Box
-          sx={{
-            position: "absolute",
-            right: "10px",
-            top: "50%",
-            transform: "translateY(-50%)",
-          }}
-        >
-          <DragIndicatorIcon sx={{ cursor: "grab", marginRight: "8px" }} />
-          <DeleteIcon sx={{ cursor: "pointer", color: "red" }} />
-        </Box>
       </Box>
 
       {/* Input Fields */}

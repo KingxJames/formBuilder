@@ -4,24 +4,29 @@ import { useDroppable } from "@dnd-kit/core";
 interface DroppableProps {
   id: string | number;
   children: React.ReactNode;
+  disabled?: boolean; // New prop to optionally disable dropping
 }
 
-export function Droppable({ id, children }: DroppableProps) {
+export function Droppable({ id, children, disabled = false }: DroppableProps) {
   const { isOver, setNodeRef } = useDroppable({
-    id, // Use the provided id instead of hardcoding "droppable"
+    id,
+    disabled, // Disable dropping if needed (useful for nested droppables)
   });
 
   const style: React.CSSProperties = {
-    color: isOver ? "green" : undefined,
-    width: "90%", // Ensure the droppable area takes full width
-    minHeight: "100px", // Ensures droppable area is visible even when empty
-    padding: "5%",
+    width: "100%",
+    minHeight: "100px",
+    padding: "16px",
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "flex-start", // Align children at the top
-    margin: "-0.5%",
-    boxSizing: "border-box", // Ensure padding and border are included in the width/height
+    alignItems: "stretch", // Changed from "center" for better item alignment
+    justifyContent: "flex-start",
+    backgroundColor: isOver ? "rgba(0, 255, 0, 0.1)" : "transparent",
+    border: isOver ? "2px dashed green" : "1px dashed #ccc",
+    borderRadius: "4px",
+    transition: "background-color 0.2s, border 0.2s",
+    boxSizing: "border-box",
+    gap: "8px", // Added for consistent spacing between items
   };
 
   return (

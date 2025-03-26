@@ -7,8 +7,6 @@ import {
   IconButton,
   Checkbox,
 } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
-import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 
 export const UBCheckBox: React.FC = () => {
   const [checkListOptions, setCheckListOptions] = useState([
@@ -64,17 +62,7 @@ export const UBCheckBox: React.FC = () => {
         <Typography>Check Box</Typography>
 
         {/* Icons */}
-        <Box
-          sx={{
-            position: "absolute",
-            right: "5%",
-            top: "50%",
-            transform: "translateY(-50%)",
-          }}
-        >
-          <DragIndicatorIcon sx={{ cursor: "grab", marginRight: "8px" }} />
-          <DeleteIcon sx={{ cursor: "pointer", color: "red" }} />
-        </Box>
+       
       </Box>
 
       <Box
@@ -120,7 +108,6 @@ export const UBCheckBox: React.FC = () => {
                 onClick={() => removeCheckListOption(option.id)}
                 size="small"
               >
-                <DeleteIcon />
               </IconButton>
             </Box>
           ))}

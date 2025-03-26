@@ -6,8 +6,7 @@ export const FormBuilderHeader: React.FC = () => {
   return (
     <Box
       sx={{
-        // ml: "-0.8%",
-        // mt: "-0.8%",
+       
         width: "100vw",
         height: "2vh",
         backgroundColor: "rgb(118, 46, 121)",

@@ -10,7 +10,6 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 
 export const UBDropDown: React.FC = () => {
   const [dropDownOptions, setDropDownOptions] = useState([
@@ -80,8 +79,6 @@ export const UBDropDown: React.FC = () => {
             transform: "translateY(-50%)",
           }}
         >
-          <DragIndicatorIcon sx={{ cursor: "grab", marginRight: "8px" }} />
-          <DeleteIcon sx={{ cursor: "pointer", color: "red" }} />
         </Box>
       </Box>
 

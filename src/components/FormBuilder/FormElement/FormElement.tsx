@@ -1,7 +1,19 @@
 import React, { useState } from "react";
-import { DndContext, DragEndEvent } from "@dnd-kit/core";
+import {
+  DndContext,
+  DragEndEvent,
+  PointerSensor,
+  useSensor,
+  useSensors,
+} from "@dnd-kit/core";
 import { Droppable } from "../../../dnd/Droppable";
 import { Draggable } from "../../../dnd/Draggable";
+import { SortableItem } from "../../../dnd/Sortable";
+import {
+  SortableContext,
+  arrayMove,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
 import Grid from "@mui/material/Grid";
 import { Box, Typography } from "@mui/material";
 import ApartmentIcon from "@mui/icons-material/Apartment";
@@ -13,7 +25,9 @@ import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
 import ArrowDropDownCircleIcon from "@mui/icons-material/ArrowDropDownCircle";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import GestureIcon from "@mui/icons-material/Gesture";
+import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 import FileUploadIcon from "@mui/icons-material/FileUpload";
+import DeleteIcon from "@mui/icons-material/Delete";
 import FormBuilderHeader from "../Header/FormBuilderHeader";
 import FormInfo from "../FormInfo/FormInfo";
 import TextFieldComponent from "../../../commons/TextField/TextFieldComponent";
@@ -33,19 +47,78 @@ export const FormElements: React.FC = () => {
     { id: string; type: string }[]
   >([]);
 
+  // Delete function
+  const handleDelete = (id: string) => {
+    setDroppedItems((prevItems) => prevItems.filter((item) => item.id !== id));
+  };
+
   // Handle drag end event
   const handleDragEnd = (event: DragEndEvent) => {
-    if (event.over) {
+    const { active, over } = event;
+
+    if (!over) return;
+
+    // If dropping from sidebar to droppable area
+    if (
+      active.id !== over.id &&
+      !droppedItems.some((item) => item.id === active.id)
+    ) {
       const newItem = {
         id: `${event.active.id}-${Date.now()}`,
         type: event.active.id as string,
       };
-      setDroppedItems((prev) => [...prev, newItem]); // Allow multiple instances
+      setDroppedItems((prev) => [...prev, newItem]);
+    }
+
+    // If reordering within droppable area
+    if (
+      active.id !== over.id &&
+      droppedItems.some((item) => item.id === active.id) &&
+      droppedItems.some((item) => item.id === over.id)
+    ) {
+      const oldIndex = droppedItems.findIndex((item) => item.id === active.id);
+      const newIndex = droppedItems.findIndex((item) => item.id === over.id);
+      setDroppedItems((items) => arrayMove(items, oldIndex, newIndex));
     }
   };
 
+  const renderElement = (type: string) => {
+    switch (type) {
+      case "workflow-step":
+        return <Workflow />;
+      case "textField":
+        return <TextFieldComponent />;
+      case "notes":
+        return <Notes />;
+      case "datePicker":
+        return <UBDatePicker />;
+      case "time":
+        return <Time />;
+      case "Radio":
+        return <UBRadio />;
+      case "Dropdown":
+        return <UBDropDown />;
+      case "CheckBox":
+        return <UBCheckBox />;
+      case "Signature":
+        return <UBSignature />;
+      case "Upload":
+        return <UBUpload />;
+      default:
+        return null;
+    }
+  };
+
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 8, // Require 8px movement before dragging starts
+      },
+    })
+  );
+
   return (
-    <DndContext onDragEnd={handleDragEnd}>
+    <DndContext onDragEnd={handleDragEnd} sensors={sensors}>
       <Box
         sx={{
           display: "flex",
@@ -302,10 +375,10 @@ export const FormElements: React.FC = () => {
             {/* Droppable Area */}
             <Box
               sx={{
-                flex: 1, // Take up remaining space
-                height: "100%", // Full height of the parent
+                flex: 1,
+                height: "100%",
                 padding: 2,
-                overflowY: "auto", // Enable vertical scrolling for the droppable area
+                overflowY: "auto",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "stretch",
@@ -315,45 +388,65 @@ export const FormElements: React.FC = () => {
               }}
             >
               <Droppable id="droppable">
-                {droppedItems.length === 0 ? (
-                  <Typography textAlign="center">
-                    + ADD WORKFLOW STEP HERE
-                  </Typography>
-                ) : (
-                  droppedItems.map((item) => (
-                    <Box
-                      key={item.id}
-                      sx={{
-                        width: "100%",
-                        background: "#f5f5f5",
-                        padding: 2,
-                        borderRadius: 1,
-                      }}
+                <Box
+                  sx={{
+                    width: "100%",
+                    minHeight: "100px",
+                    background:
+                      droppedItems.length === 0 ? "#f5f5f5" : "transparent",
+                    padding: 2,
+                    borderRadius: 1,
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent:
+                      droppedItems.length === 0 ? "center" : "flex-start",
+                  }}
+                >
+                  {droppedItems.length === 0 ? (
+                    <Typography>Drop here</Typography>
+                  ) : (
+                    <SortableContext
+                      items={droppedItems}
+                      strategy={verticalListSortingStrategy}
                     >
-                      {item.type === "workflow-step" ? (
-                        <Workflow />
-                      ) : item.type === "textField" ? (
-                        <TextFieldComponent />
-                      ) : item.type === "notes" ? (
-                        <Notes />
-                      ) : item.type === "datePicker" ? (
-                        <UBDatePicker />
-                      ) : item.type === "time" ? (
-                        <Time />
-                      ) : item.type === "Radio" ? (
-                        <UBRadio />
-                      ) : item.type === "Dropdown" ? (
-                        <UBDropDown />
-                      ) : item.type === "CheckBox" ? (
-                        <UBCheckBox />
-                      ) : item.type === "Signature" ? (
-                        <UBSignature />
-                      ) : item.type === "Upload" ? (
-                        <UBUpload />
-                      ) : null}
-                    </Box>
-                  ))
-                )}
+                      {droppedItems.map((item) => (
+                        <SortableItem key={item.id} id={item.id}>
+                          <Box
+                            sx={{
+                              width: "100%",
+                              background: "#f5f5f5",
+                              padding: 2,
+                              borderRadius: 1,
+                              mb: 2,
+                              display: "flex",
+                              alignItems: "center",
+                            }}
+                          >
+                            <DragIndicatorIcon
+                              sx={{
+                                cursor: "grab",
+                                marginRight: 2,
+                                color: "rgba(0, 0, 0, 0.54)",
+                              }}
+                            />
+                            <DeleteIcon
+                              sx={{
+                                cursor: "pointer",
+                                color: "red",
+                                marginRight: 2,
+                              }}
+                              onClick={() => handleDelete(item.id)}
+                            />
+                            <Box sx={{ flexGrow: 1 }}>
+                              {renderElement(item.type)}
+                            </Box>
+                          </Box>
+                        </SortableItem>
+                      ))}
+                    </SortableContext>
+                  )}
+                </Box>
               </Droppable>
             </Box>
           </Box>

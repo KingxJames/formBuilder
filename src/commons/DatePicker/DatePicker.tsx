@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { Box, Typography, TextField } from "@mui/material";
-import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
-import DeleteIcon from "@mui/icons-material/Delete";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { Dayjs } from "dayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -47,8 +45,6 @@ export const UBDatePicker: React.FC = () => {
               transform: "translateY(-50%)",
             }}
           >
-            <DragIndicatorIcon sx={{ cursor: "grab", marginRight: "8px" }} />
-            <DeleteIcon sx={{ cursor: "pointer", color: "red" }} />
           </Box>
         </Box>
 

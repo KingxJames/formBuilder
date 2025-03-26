@@ -1,7 +1,5 @@
 import React, { useRef, useState } from "react";
 import { Box, Typography, TextField, Button } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
-import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 import SignatureCanvas from "react-signature-canvas";
 
 export const UBSignature: React.FC = () => {
@@ -47,19 +45,6 @@ export const UBSignature: React.FC = () => {
         }}
       >
         <Typography>Signature</Typography>
-
-        {/* Icons */}
-        <Box
-          sx={{
-            position: "absolute",
-            right: "5%",
-            top: "50%",
-            transform: "translateY(-50%)",
-          }}
-        >
-          <DragIndicatorIcon sx={{ cursor: "grab", marginRight: "8px" }} />
-          <DeleteIcon sx={{ cursor: "pointer", color: "red" }} />
-        </Box>
       </Box>
 
       {/* Input Fields */}
@@ -102,7 +87,13 @@ export const UBSignature: React.FC = () => {
         </Box>
 
         {/* Buttons */}
-        <Box sx={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: "100%",
+          }}
+        >
           <Button
             variant="outlined"
             onClick={clearSignature}

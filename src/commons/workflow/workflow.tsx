@@ -1,7 +1,5 @@
 import React from "react";
 import { Box, Typography, TextField } from "@mui/material";
-import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
-import DeleteIcon from "@mui/icons-material/Delete";
 
 export const Workflow: React.FC = () => {
   return (
@@ -14,8 +12,7 @@ export const Workflow: React.FC = () => {
         border: "1px solid black",
         borderRadius: "5px",
         position: "relative",
-        margin: "auto"
-        
+        margin: "auto",
       }}
     >
       {/* Top Section: Input Field with Icons */}
@@ -28,11 +25,11 @@ export const Workflow: React.FC = () => {
           marginTop: "4%",
         }}
       >
-        <TextField variant="standard" placeholder="Heading" sx={{ width: "85%" }} />
-        <Box sx={{ position: "absolute", right: "10px", top: "50%", transform: "translateY(-50%)" }}>
-          <DragIndicatorIcon sx={{ cursor: "grab", marginRight: "8px" }} />
-          <DeleteIcon sx={{ cursor: "pointer", color: "red" }} />
-        </Box>
+        <TextField
+          variant="standard"
+          placeholder="Heading"
+          sx={{ width: "85%" }}
+        />
       </Box>
 
       {/* Centered Drop Field Box */}

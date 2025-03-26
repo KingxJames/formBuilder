@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { TextField, Box, Typography } from "@mui/material";
-import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
-import DeleteIcon from "@mui/icons-material/Delete";
 
 export const TextFieldComponent: React.FC = () => {
+  const [isDeleted, setIsDeleted] = useState(false);
+
+  if (isDeleted) {
+    return null; // Return null to remove the component from the DOM
+  }
+
   return (
     <Box
       sx={{
@@ -16,6 +20,7 @@ export const TextFieldComponent: React.FC = () => {
         position: "relative",
         margin: "auto",
       }}
+      draggable
     >
       <Box
         sx={{
@@ -28,18 +33,6 @@ export const TextFieldComponent: React.FC = () => {
         }}
       >
         <Typography> Text Field</Typography>
-
-        <Box
-          sx={{
-            position: "absolute",
-            right: "10px",
-            top: "50%",
-            transform: "translateY(-50%)",
-          }}
-        >
-          <DragIndicatorIcon sx={{ cursor: "grab", marginRight: "8px" }} />
-          <DeleteIcon sx={{ cursor: "pointer", color: "red" }} />
-        </Box>
       </Box>
 
       <Box

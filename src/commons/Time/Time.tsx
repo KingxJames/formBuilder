@@ -3,8 +3,6 @@ import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { Box, Typography, TextField } from "@mui/material";
-import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
-import DeleteIcon from "@mui/icons-material/Delete";
 
 export const Time: React.FC = () => {
   return (
@@ -32,19 +30,6 @@ export const Time: React.FC = () => {
         }}
       >
         <Typography>Label Of Time</Typography>
-
-        {/* Icons */}
-        <Box
-          sx={{
-            position: "absolute",
-            right: "5%",
-            top: "50%",
-            transform: "translateY(-50%)",
-          }}
-        >
-          <DragIndicatorIcon sx={{ cursor: "grab", marginRight: "8px" }} />
-          <DeleteIcon sx={{ cursor: "pointer", color: "red" }} />
-        </Box>
       </Box>
 
       {/* Input Fields */}

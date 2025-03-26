@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Box, Typography, TextField, Button } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 
 export const UBUpload: React.FC = () => {
   const [upload, setUpload] = useState<File[]>([]); // Array to store multiple files
@@ -68,18 +67,7 @@ export const UBUpload: React.FC = () => {
       >
         <Typography>Upload Files</Typography>
 
-        {/* Icons */}
-        <Box
-          sx={{
-            position: "absolute",
-            right: "5%",
-            top: "50%",
-            transform: "translateY(-50%)",
-          }}
-        >
-          <DragIndicatorIcon sx={{ cursor: "grab", marginRight: "8px" }} />
-          <DeleteIcon sx={{ cursor: "pointer", color: "red" }} />
-        </Box>
+       
       </Box>
 
       {/* Input Fields */}
