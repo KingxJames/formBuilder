@@ -1,11 +1,21 @@
 import React, { useState } from "react";
-import { Box, Button, Typography, Dialog, TextField } from "@mui/material";
+import { Box, Typography, TextField } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
 import SearchIcon from "@mui/icons-material/Search";
 import UBLogo from "../../../src/images/UB-Logo.png";
-import CreateFormBox from "../../commons/createFormBox/CreateFormBox";
+import CreateFormBox from "../createFormBox/CreateFormBox";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../store/store";
+
+import { addForm, setSearchQuery } from "../../../store/features/formSlice";
+
+// Define the FormField type
+interface FormField {
+  id: string;
+  label: string;
+  type: string;
+  required: boolean;
+}
 
 interface AddFormProps {
   name: string;
@@ -13,12 +23,12 @@ interface AddFormProps {
   editForm: () => void;
 }
 
-export const AddForm: React.FC<AddFormProps> = ({
-  name,
-  deleteForm,
-  editForm,
-}) => {
+export const AddForm: React.FC<AddFormProps> = ({ name }) => {
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
+  const searchQuery = useSelector(
+    (state: RootState) => state.forms.searchQuery
+  );
 
   const handleOpenDialog = () => {
     setOpen(true);
@@ -26,6 +36,18 @@ export const AddForm: React.FC<AddFormProps> = ({
 
   const handleCloseDialog = () => {
     setOpen(false);
+  };
+
+  const handleCreateForm = (formData: {
+    name: string;
+    fields: FormField[];
+  }) => {
+    dispatch(addForm(formData));
+    handleCloseDialog();
+  };
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(setSearchQuery(e.target.value));
   };
 
   return (
@@ -70,8 +92,9 @@ export const AddForm: React.FC<AddFormProps> = ({
             variant="outlined"
             placeholder="Search..."
             fullWidth
+            value={searchQuery}
+            onChange={handleSearchChange}
             InputProps={{
-              // Add the SearchIcon
               startAdornment: (
                 <SearchIcon sx={{ color: "action.active", mr: 1 }} />
               ),
@@ -113,11 +136,13 @@ export const AddForm: React.FC<AddFormProps> = ({
         >
           <AddIcon fontSize="large" />
         </Box>
-
         <Typography variant="body1">{name}</Typography>
-
-        {/* Create Form Dialog */}
-        <CreateFormBox open={open} onClose={handleCloseDialog} />
+        {/*  Pass handleCreateForm to your CreateFormBox component */}
+        <CreateFormBox
+          open={open}
+          onClose={handleCloseDialog}
+          onCreate={handleCreateForm} // Pass handleCreateForm to your CreateFormBox component
+        />
       </Box>
     </Box>
   );

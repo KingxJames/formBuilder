@@ -30,16 +30,15 @@ import FileUploadIcon from "@mui/icons-material/FileUpload";
 import DeleteIcon from "@mui/icons-material/Delete";
 import FormBuilderHeader from "../Header/FormBuilderHeader";
 import FormInfo from "../FormInfo/FormInfo";
-import TextFieldComponent from "../../../commons/TextField/TextFieldComponent";
-import Workflow from "../../../commons/workflow/workflow";
-import Notes from "../../../commons/Notes/Notes";
-import UBDatePicker from "../../../commons/DatePicker/DatePicker";
-import Time from "../../../commons/Time/Time";
-import UBRadio from "../../../commons/Radio/Radio";
-import UBDropDown from "../../../commons/DropDown/DropDown";
-import UBCheckBox from "../../../commons/CheckBox/CheckBox";
-import UBSignature from "../../../commons/Signature/Signature";
-import UBUpload from "../../../commons/Upload/UBUpload";
+import TextFieldComponent from "../../TextField/TextFieldComponent";
+import Notes from "../../Notes/Notes";
+import UBDatePicker from "../../DatePicker/DatePicker";
+import Time from "../../Time/Time";
+import UBRadio from "../../Radio/Radio";
+import UBDropDown from "../../DropDown/DropDown";
+import UBCheckBox from "../../CheckBox/CheckBox";
+import UBSignature from "../../Signature/Signature";
+import UBUpload from "../../Upload/UBUpload";
 import FormPreview from "../../../components/Preview/FormPreview";
 
 interface FormComponent {
@@ -92,8 +91,6 @@ export const FormElements: React.FC = () => {
 
   const renderElement = (item: FormComponent) => {
     switch (item.type) {
-      case "workflow-step":
-        return <Workflow />;
       case "textField":
         return <TextFieldComponent {...item.config} />;
       case "notes":
@@ -161,29 +158,6 @@ export const FormElements: React.FC = () => {
             }}
           >
             <Box sx={{ mb: "10%", textAlign: "center" }}>
-              <Typography
-                sx={{
-                  fontSize: "15px",
-                  fontWeight: "600",
-                  mb: "5%",
-                  textAlign: "left",
-                }}
-              >
-                Containers
-              </Typography>
-              <Grid
-                container
-                rowSpacing={1}
-                columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-              >
-                <Grid item xs={12} display="flex" justifyContent="center">
-                  <Draggable id="workflow-step">
-                    <ApartmentIcon />
-                    Workflow Step
-                  </Draggable>
-                </Grid>
-              </Grid>
-
               <Box sx={{ mb: "10%" }}>
                 <Typography
                   sx={{
